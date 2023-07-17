@@ -3,13 +3,17 @@ Con un form passare come parametri GET name, mail e age e verificare (cercando i
 <?php
 $result = "";
 
+$color = "";
+
 $name = $_GET['name'] ?? '';
 $email = $_GET['email'] ?? '';
 $age = $_GET['age'] ?? '';
 
 if (strlen($name) > 3 && strpos($email, '.') !== false && strpos($email, '@') !== false && is_numeric($age)) {
+    $color = "green";
     $result = "Accesso riuscito";
 } else {
+    $color = "red";
     $result = "Accesso negato";
 }
 
@@ -25,7 +29,7 @@ if (strlen($name) > 3 && strpos($email, '.') !== false && strpos($email, '@') !=
 </head>
 
 <body>
-    <h1><? echo $result ?></h1>
+    <h1 style="color: <? echo $color ?>"><? echo $result ?></h1>
 </body>
 
 </html>
